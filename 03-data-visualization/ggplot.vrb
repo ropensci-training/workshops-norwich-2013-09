@@ -1,13 +1,9 @@
-\frametitle{and along rows}
-\begin{knitrout}\footnotesize
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
-\begin{alltt}
-\hlkwd{ggplot}\hlstd{(iris,} \hlkwd{aes}\hlstd{(Sepal.Length, Sepal.Width,} \hlkwc{color} \hlstd{= Species))} \hlopt{+}
-\hlkwd{geom_point}\hlstd{()} \hlopt{+}
-\hlkwd{facet_grid}\hlstd{(.} \hlopt{~} \hlstd{Species)}
-\end{alltt}
-\end{kframe}
-\includegraphics[width=.75\linewidth]{figure/facet_grid2}
-
-\end{knitrout}
-
+\frametitle{Further help}
+\begin{itemize}
+\item You've just scratched the surface with ggplot2.
+\item Practice
+\item Read the docs (either locally in \texttt{R} or at \url{http://docs.ggplot2.org/current/})
+\item Work together
+\end{itemize}
+\includegraphics[scale=.15]{images/chang_book.png}
+\includegraphics[scale=.15]{images/hadley.png}

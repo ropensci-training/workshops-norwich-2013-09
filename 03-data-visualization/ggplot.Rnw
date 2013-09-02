@@ -24,20 +24,10 @@ knit_hooks$set(inline = function(x) {
 
 % --------------------------------------------------------------
 \begin{document}
-\title{Data Visualization with R \& ggplot2}
+\title{Section 03: Data Visualization with R \& ggplot2}
 \author{Karthik Ram}
 \maketitle
 
-% --------------------------------------------------------------
-\begin{frame}[fragile]
-\frametitle{Download this PDF}
-\begingroup
-    \fontsize{12pt}{12pt}\selectfont
-\href{http://github.com/karthikram/ggplot-lecture}{github.com/karthikram/ggplot-lecture}\\
-\href{https://speakerdeck.com/karthik/}{https://speakerdeck.com/karthik/}
-\endgroup
-\includegraphics[scale=.31]{images/git_repo.png}
-\end{frame}
 
 % --------------------------------------------------------------
 \begin{frame}[fragile]
