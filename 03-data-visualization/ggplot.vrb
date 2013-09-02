@@ -1,0 +1,13 @@
+\frametitle{and along rows}
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{ggplot}\hlstd{(iris,} \hlkwd{aes}\hlstd{(Sepal.Length, Sepal.Width,} \hlkwc{color} \hlstd{= Species))} \hlopt{+}
+\hlkwd{geom_point}\hlstd{()} \hlopt{+}
+\hlkwd{facet_grid}\hlstd{(.} \hlopt{~} \hlstd{Species)}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=.75\linewidth]{figure/facet_grid2}
+
+\end{knitrout}
+

@@ -1,0 +1,707 @@
+% Introduction to ggplot2
+% Author: Karthik Ram, karthik.ram@gmail.com
+% Licence, CC-BY
+\documentclass{beamer}
+\usepackage{listings}
+\usepackage{inconsolata}
+\setbeamertemplate{frametitle}[default][center]
+\usepackage{url}
+\setcounter{secnumdepth}{-1}
+\usetheme{Amsterdam}
+% --------------------------------------------------------------
+% Setting up some knitr options
+<<setup, include=FALSE>>=
+opts_chunk$set(cache=TRUE, message=FALSE)
+# smaller font size for chunks
+opts_chunk$set(size = 'footnotesize')
+options(width = 60)
+knit_hooks$set(inline = function(x) { 
+  if (is.numeric(x)) return(knitr:::format_sci(x, 'latex')) 
+  knitr:::hi_latex(x) 
+}) 
+@
+
+
+% --------------------------------------------------------------
+\begin{document}
+\title{Data Visualization with R \& ggplot2}
+\author{Karthik Ram}
+\maketitle
+
+% --------------------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{Download this PDF}
+\begingroup
+    \fontsize{12pt}{12pt}\selectfont
+\href{http://github.com/karthikram/ggplot-lecture}{github.com/karthikram/ggplot-lecture}\\
+\href{https://speakerdeck.com/karthik/}{https://speakerdeck.com/karthik/}
+\endgroup
+\includegraphics[scale=.31]{images/git_repo.png}
+\end{frame}
+
+% --------------------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{Some housekeeping}
+Install some packages (make sure you also have recent copies of reshape2 and plyr)
+<<installation, tidy=FALSE, echo=TRUE, eval=FALSE>>=
+install.packages("ggplot2", dependencies = TRUE)
+@
+\end{frame}
+
+
+
+% --------------------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{Base graphics}
+\begin{itemize}
+\item Ugly, laborious, and verbose\\
+\item There are better ways to describe statistical visualizations.\\
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Why \texttt{ggplot2}?}
+\begin{itemize}
+\item Follows a grammar, just like any language.
+\item It defines basic components that make up a sentence. In this case, the grammar defines components in a plot.
+\item Grammar of graphics originally coined by Lee Wilkinson
+\end{itemize}
+\end{frame}
+
+
+% --------------------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{Why \texttt{ggplot2}?}
+\begin{itemize}
+\item  Supports a continuum of expertise.
+\item Get started right away but with practice you can effortless build complex, publication quality figures.
+\end{itemize}
+\end{frame}
+
+% --------------------------------------------------------------
+\section*{Basics}
+\frame{\sectionpage}
+
+
+\begin{frame}[fragile]
+\frametitle{Some terminology}
+\begin{itemize}
+\item \textbf{ggplot} - The main function where you specify the dataset and variables to plot\\
+\item \textbf{geoms} - geometric objects
+    \begin{itemize}
+    \item geom\_point(), geom\_bar(), geom\_density(), geom\_line(), geom\_area()
+    \end{itemize}
+\item \textbf{aes} -  aesthetics
+        \begin{itemize}
+    \item shape, transparency (alpha), color, fill, linetype.
+    \end{itemize}
+\item \textbf{scales}  Define how your data will be plotted
+        \begin{itemize}
+    \item \emph{continuous}, \emph{discrete}, \emph{log}
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+
+% --------------------------------------------------------------
+\section*{Assembling your first ggplot}
+\frame{\sectionpage}
+
+% --------------------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{The iris dataset}
+<<some_data, tidy=FALSE, echo=TRUE>>=
+head(iris)
+@
+\end{frame}
+
+% --------------------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{Let's try an example}
+<<first_plot , fig.width=6, fig.height=4, out.width='.75\\linewidth', fig.show='hold',  tidy=FALSE>>=
+ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width)) +
+geom_point()
+@
+\end{frame}
+
+% --------------------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{Basic structure}
+<<first_plotb , eval=FALSE, tidy=FALSE>>=
+ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width))
+ + geom_point()
+myplot <- ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width))
+myplot + geom_point()
+ @
+\begin{itemize}
+\item Specify the data and variables inside the \texttt{ggplot} function.
+\item Anything else that goes in here becomes a global setting.
+\item Then add layers of geometric objects, statistical models, and panels.
+\end{itemize}
+\end{frame}
+
+% --------------------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{Quick note}
+\begin{itemize}
+\item Never use \texttt{qplot} - short for quick plot.
+\item You'll end up unlearning and relearning a good bit.
+\end{itemize}
+
+\end{frame}
+
+
+% --------------------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{Increase the size of points}
+<<first_plot_size , fig.width=6, fig.height=4, out.width='.75\\linewidth', fig.show='hold',  tidy=FALSE>>=
+ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width)) +
+geom_point(size = 3)
+@
+\end{frame}
+
+% --------------------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{Add some color}
+<<first_plot_color , fig.width=6, fig.height=4, out.width='.75\\linewidth', fig.show='hold',  tidy=FALSE>>=
+ggplot(iris, aes(Sepal.Length, Sepal.Width, color = Species)) +
+geom_point(size = 3)
+@
+\end{frame}
+
+% --------------------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{Differentiate points by shape}
+<<first_plot_shape , fig.width=6, fig.height=4, out.width='.75\\linewidth', fig.show='hold',  tidy=FALSE>>=
+ggplot(iris, aes(Sepal.Length, Sepal.Width, color = Species)) +
+geom_point(aes(shape = Species), size = 3)
+@
+\end{frame}
+
+% --------------------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{Exercise 1}
+<<subset_data, tidy=FALSE, eval=FALSE>>=
+# Make a small sample of the diamonds dataset
+d2 <- diamonds[sample(1:dim(diamonds)[1], 1000), ]
+@
+Then generate this plot below.
+
+<<ex1, echo = FALSE, out.width='.75\\linewidth', fig.height=3>>=
+d2 <- diamonds[sample(1:dim(diamonds)[1], 1000), ]
+ggplot(d2, aes(carat, price, color = color)) + geom_point() + theme_gray()
+@
+\end{frame}
+% --------------------------------------------------------------
+\section*{Box plots}
+\frame{\sectionpage}
+
+\begin{frame}[fragile]
+See \texttt{?geom\_boxplot} for list of options
+<<boxplots1 , fig.width=6, fig.height=4, out.width='.75\\linewidth', fig.show='hold',  tidy=FALSE>>=
+library(MASS)
+ggplot(birthwt, aes(factor(race), bwt)) + geom_boxplot()
+@
+\end{frame}
+
+
+% --------------------------------------------------------------
+\section*{Histograms}
+\frame{\sectionpage}
+
+% --------------------------------------------------------------
+\begin{frame}[fragile]
+See \texttt{?geom\_histogram} for list of options
+<<histogr , fig.width=6, fig.height=4, out.width='.75\\linewidth', fig.show='hold',  tidy=FALSE>>=
+h <- ggplot(faithful, aes(x = waiting))
+h + geom_histogram(binwidth = 30, colour = "black")
+@
+\end{frame}
+
+% --------------------------------------------------------------
+\begin{frame}[fragile]
+<<histogra , fig.width=6, fig.height=4, out.width='.75\\linewidth', fig.show='hold',  tidy=FALSE>>=
+h <- ggplot(faithful, aes(x = waiting))
+h + geom_histogram(binwidth = 8, fill = "steelblue",
+colour = "black")
+@
+\end{frame}
+
+% --------------------------------------------------------------
+\section*{Line plots}
+\frame{\sectionpage}
+
+\begin{frame}[fragile]
+<<line_setup, echo=FALSE>>=
+setwd('~/Github/ggplot2-lecture/')
+@
+% climate <- read.csv(text = RCurl::getURL('https://raw.github.com/karthikram/ggplot-lecture/master/climate.csv'))
+<<linea , fig.width=6, fig.height=4, out.width='.75\\linewidth', fig.show='hold',  tidy=FALSE>>=
+climate <- read.csv("climate.csv", header = T)
+ggplot(climate, aes(Year, Anomaly10y)) +
+geom_line()
+@
+\begin{flushright}
+\begingroup
+    \fontsize{6pt}{12pt}\selectfont
+    \begin{verbatim}
+        climate <- read.csv(text =
+        RCurl::getURL('https://raw.github.com/karthikram/ggplot-lecture/master/climate.csv'))
+    \end{verbatim}
+\endgroup
+\end{flushright}
+\end{frame}
+
+\begin{frame}[fragile]
+We can also plot confidence regions
+<<lineb , fig.width=6, fig.height=4, out.width='.75\\linewidth', fig.show='hold',  tidy=FALSE>>=
+ggplot(climate, aes(Year, Anomaly10y)) +
+geom_ribbon(aes(ymin = Anomaly10y - Unc10y,
+ymax = Anomaly10y + Unc10y),
+fill = "blue", alpha = .1) +
+geom_line(color = "steelblue")
+@
+\end{frame}
+
+% --------------------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{Exercise 2}
+\begin{itemize}
+\item Modify the previous plot and change it such that there are three lines instead of one with a confidence band.
+<<ex2, echo = FALSE, fig.width=6, fig.height=4, out.width='.75\\linewidth', fig.show='hold'>>=
+cplot <- ggplot(climate, aes(Year, Anomaly10y))
+cplot <- cplot + geom_line(size = 0.7, color = "black")
+cplot <- cplot + geom_line(aes(Year, Anomaly10y + Unc10y), linetype = "dashed", size = 0.7, color = "red")
+cplot <- cplot + geom_line(aes(Year, Anomaly10y - Unc10y), linetype = "dashed", size = 0.7, color = "red")
+cplot + theme_gray()
+@
+
+\end{itemize}
+\end{frame}
+
+
+% --------------------------------------------------------------
+\section*{Bar plots}
+\frame{\sectionpage}
+
+% --------------------------------------------------------------
+\begin{frame}[fragile]
+<<barone , fig.width=6, fig.height=4, out.width='.75\\linewidth', fig.show='hold',  tidy=FALSE>>=
+ggplot(iris, aes(Species, Sepal.Length)) +
+geom_bar(stat = "identity")
+@
+\end{frame}
+
+% --------------------------------------------------------------
+\begin{frame}[fragile]
+<<bartwo , fig.width=6, fig.height=4, out.width='.75\\linewidth', fig.show='hold',  tidy=FALSE>>=
+df  <- melt(iris, id.vars = "Species")
+ggplot(df, aes(Species, value, fill = variable)) +
+geom_bar(stat = "identity")
+@
+\end{frame}
+
+
+
+% --------------------------------------------------------------
+\section*{plyr and reshape are key for using \texttt{R}}
+\frame{\sectionpage}
+
+\begin{frame}[fragile]
+\frametitle{plyr and reshape}
+These two packages are the swiss army knives of R.
+\begin{itemize}
+\item \texttt{plyr}
+    \begin{enumerate}
+    \item ddply
+    \item llply
+    \item join
+    \end{enumerate}
+\item \texttt{reshape}.
+    \begin{enumerate}
+    \item melt
+    \item dcast
+    \item acast
+    \end{enumerate}
+\end{itemize}
+\end{frame}
+
+
+% --------------------------------------------------------------
+\begin{frame}[fragile]
+<<bartwodata , fig.width=6, fig.height=4, out.width='.75\\linewidth', fig.show='hold',  tidy=FALSE>>=
+iris[1:2, ]
+df  <- melt(iris, id.vars = "Species")
+df[1:2, ]
+@
+\end{frame}
+
+
+% --------------------------------------------------------------
+\begin{frame}[fragile]
+<<barthree , fig.width=6, fig.height=4, out.width='.75\\linewidth', fig.show='hold',  tidy=FALSE>>=
+ggplot(df, aes(Species, value, fill = variable)) +
+geom_bar(stat = "identity", position = "dodge")
+@
+\end{frame}
+
+% --------------------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{Exercise 3}
+Using the d2 dataset you created earlier, generate this plot below. Take a quick look at the data first to see if it needs to be binned.
+<<ex3, fig.width=6, fig.height=4, out.width='.75\\linewidth', fig.show='hold', echo = FALSE>>=
+ggplot(d2, aes(clarity, fill = cut)) +
+geom_bar(position = "dodge",stat = "bin") + theme_gray()
+@
+\end{frame}
+
+% --------------------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{Exercise 4}
+\begin{itemize}
+\item Using the climate dataset, create a new variable called sign. Make it logical (true/false) based on the sign of Anomaly10y.
+\item Plot a bar plot and use \texttt{sign} variable as the fill.\\
+<<ex4, echo = FALSE, warning = FALSE, fig.width=6, fig.height=4, out.width='.75\\linewidth', fig.show='hold'>>=
+clim <- read.csv('climate.csv', header = TRUE)
+clim$sign <- ifelse(clim$Anomaly10y<0, FALSE, TRUE)
+# or as simple as
+# clim$sign <- clim$Anomaly10y < 0
+ggplot(clim, aes(Year, Anomaly10y)) + geom_bar(stat = "identity", aes(fill = sign)) + theme_gray()
+@
+
+\end{itemize}
+\end{frame}
+
+
+% --------------------------------------------------------------
+\section*{Density Plots}
+\frame{\sectionpage}
+
+\begin{frame}[fragile]
+\frametitle{Density plots}
+<<densityone , eval=TRUE, fig.width=6, fig.height=4, out.width='.75\\linewidth', fig.show='hold',  tidy=FALSE>>=
+ggplot(faithful, aes(waiting)) + geom_density()
+@
+\end{frame}
+
+% --------------------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{Density plots}
+<<densityonefove , eval=TRUE, fig.width=6, fig.height=4, out.width='.75\\linewidth', fig.show='hold',  tidy=FALSE>>=
+ggplot(faithful, aes(waiting)) +
+geom_density(fill = "blue", alpha = 0.1)
+@
+\end{frame}
+
+
+
+% --------------------------------------------------------------
+\begin{frame}[fragile]
+<<densitytwo , , fig.width=6, fig.height=4, out.width='.75\\linewidth', fig.show='hold',  tidy=FALSE>>=
+ggplot(faithful, aes(waiting)) +
+geom_line(stat = "density")
+@
+\end{frame}
+
+
+% --------------------------------------------------------------
+\section*{Mapping Variables to colors}
+\frame{\sectionpage}
+
+
+% --------------------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{Colors}
+<<color_list2, eval = FALSE, fig.width=4, fig.height=6, out.width='.75\\linewidth'>>=
+aes(color = variable)
+aes(color = "black")
+# Or add it as a scale
+scale_fill_manual(values = c("color1", "color2"))
+@
+\end{frame}
+
+
+% --------------------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{The RColorBrewer package}
+<<color_list, eval = FALSE, fig.width=4, fig.height=5, out.width='.75\\linewidth'>>=
+library(RColorBrewer)
+display.brewer.all()
+@
+\includegraphics[scale=0.25]{images/color_palette.png}
+\end{frame}
+
+% --------------------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{Using a color brewer palette}
+<<barcolors, fig.width=6, fig.height=4, out.width='.75\\linewidth', fig.show='hold',  tidy=FALSE>>=
+df  <- melt(iris, id.vars = "Species")
+ggplot(df, aes(Species, value, fill = variable)) +
+geom_bar(stat = "identity", position = "dodge") +
+scale_fill_brewer(palette = "Set1")
+@
+\end{frame}
+
+% --------------------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{Manual color scale}
+<<facetgridcolors, eval = TRUE, fig.width=4, fig.height=3, out.width='.75\\linewidth', tidy=FALSE>>=
+ggplot(iris, aes(Sepal.Length, Sepal.Width, color = Species)) +
+geom_point() +
+facet_grid(Species ~ .) +
+scale_color_manual(values = c("red", "green", "blue"))
+@
+\end{frame}
+
+% --------------------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{Refer to a color chart for beautful visualizations}
+\url{http://tools.medialab.sciences-po.fr/iwanthue/}
+\includegraphics[scale=0.25]{images/color_schemes.png}
+\end{frame}
+
+% -----------------------------------
+
+\section*{Faceting}
+\frame{\sectionpage}
+
+\begin{frame}[fragile]
+\frametitle{Faceting along columns}
+<<facetgrid1, eval = TRUE, fig.width=4, fig.height=3, out.width='.75\\linewidth', tidy=FALSE>>=
+ggplot(iris, aes(Sepal.Length, Sepal.Width, color = Species)) +
+geom_point() +
+facet_grid(Species ~ .)
+@
+\end{frame}
+
+% --------------------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{and along rows}
+<<facet_grid2, eval = TRUE, fig.width=4, fig.height=3, out.width='.75\\linewidth', tidy= FALSE>>=
+ggplot(iris, aes(Sepal.Length, Sepal.Width, color = Species)) +
+geom_point() +
+facet_grid(. ~ Species)
+@
+\end{frame}
+
+% --------------------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{or just wrap your panels}
+<<facet_wrap, eval = TRUE, fig.width=4, fig.height=3, out.width='.75\\linewidth', tidy = FALSE>>=
+ggplot(iris, aes(Sepal.Length, Sepal.Width, color = Species)) +
+geom_point() +
+facet_wrap( ~ Species)
+@
+\end{frame}
+
+% --------------------------------------------------------------
+\section*{Adding smoothers}
+\frame{\sectionpage}
+
+
+% --------------------------------------------------------------
+\begin{frame}[fragile]
+<<adding_stats,, eval = TRUE, fig.width=5, fig.height=2, out.width='.75\\linewidth', tidy=FALSE>>=
+ggplot(iris, aes(Sepal.Length, Sepal.Width, color = Species)) +
+geom_point(aes(shape = Species), size = 3) +
+geom_smooth(method = "lm")
+@
+\end{frame}
+
+% --------------------------------------------------------------
+\begin{frame}[fragile]
+<<adding_stats2,, eval = TRUE, tidy=FALSE, fig.width=7, fig.height=3, out.width='.75\\linewidth'>>=
+ggplot(iris, aes(Sepal.Length, Sepal.Width, color = Species)) +
+geom_point(aes(shape = Species), size = 3) +
+geom_smooth(method = "lm") +
+facet_grid(. ~ Species)
+@
+\end{frame}
+
+% --------------------------------------------------------------
+\section*{Themes}
+\frame{\sectionpage}
+
+% --------------------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{Adding themes}
+Themes are a great way to define custom plots.
+<<theme_list, eval = FALSE, fig.width=4, fig.height=6, out.width='.75\\linewidth'>>=
++ theme()
+# see ?theme() for more options
+@
+
+\end{frame}
+
+
+% --------------------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{A themed plot}
+<<facet_wrap_theme, eval = FALSE, fig.width=4, fig.height=6, out.width='.75\\linewidth', tidy=FALSE>>=
+ggplot(iris, aes(Sepal.Length, Sepal.Width, color = Species)) +
+geom_point(size = 1.2, shape = 16) +
+facet_wrap( ~ Species) +
+theme(legend.key = element_rect(fill = NA),
+legend.position = "bottom",
+strip.background = element_rect(fill = NA),
+axis.title.y = element_text(angle = 0))
+@
+\end{frame}
+
+% --------------------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{Adding themes}
+<<facet_wrap_theme_execc, eval = TRUE, echo = FALSE, fig.width=4, fig.height=3, out.width='.75\\linewidth'>>=
+ggplot(iris, aes(Sepal.Length, Sepal.Width, color = Species)) +
+geom_point(size = 1.2, shape = 16) +
+facet_wrap( ~ Species) +
+theme(legend.key = element_rect(fill = NA),
+legend.position = "bottom",
+strip.background = element_rect(fill = NA),
+axis.title.y = element_text(angle = 0))
+@
+\end{frame}
+
+% --------------------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{ggthemes library}
+<<facet_wrap_theme_exec, eval = FALSE, echo = TRUE, fig.width=4, fig.height=3, out.width='.75\\linewidth'>>=
+install.packages('ggthemes')
+library(ggthemes)
+# Then add one of these themes to your plot
+ + theme_stata()
+ + theme_excel()
+ + theme_wsj()
+ + theme_solarized()
+@
+\end{frame}
+
+
+% --------------------------------------------------------------
+\section*{Create functions to automate your plotting}
+\frame{\sectionpage}
+
+% --------------------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{Write functions for day to day plots}
+<<custom_plots, eval=FALSE, tidy=FALSE>>=
+my_custom_plot <- function(df, title = "", ...) {
+    ggplot(df, ...) +
+    ggtitle(title) +
+    whatever_geoms() +
+    theme(...)
+}
+@
+
+Then just call your function to generate a plot.
+It's a lot easier to fix one function that do it over and over for many plots
+<<custom_plots2, eval=FALSE, tidy=FALSE>>=
+plot1 <- my_custom_plot(dataset1, title = "Figure 1")
+@
+
+
+\end{frame}
+
+% --------------------------------------------------------------
+\section*{Scales}
+\frame{\sectionpage}
+
+% --------------------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{Commonly used scales}
+<<scale_list, eval=FALSE, tidy=FALSE>>=
+scale_fill_discrete(); scale_colour_discrete()
+scale_fill_hue(); scale_color_hue()
+scale_fill_manual();  scale_color_manual()
+scale_fill_brewer(); scale_color_brewer()
+scale_linetype(); scale_shape_manual()
+@
+\end{frame}
+
+% --------------------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{Adding a continuous scale}
+<<boxplots3 , fig.width=6, fig.height=4, out.width='.75\\linewidth', fig.show='hold',  tidy=FALSE>>=
+library(MASS)
+ggplot(birthwt, aes(factor(race), bwt)) +
+geom_boxplot(width = .2) +
+scale_y_continuous(labels = (paste0(1:4, " Kg")),
+breaks = seq(1000, 4000, by = 1000))
+@
+\end{frame}
+
+
+% --------------------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{Another continuous scale with custom labels}
+<<scale_1, eval = FALSE, out.width='.75\\linewidth', tidy = FALSE>>=
+# Assign the plot to an object
+dd <- ggplot(iris, aes(Sepal.Length, Sepal.Width, color = Species)) +
+geom_point(size = 4, shape = 16) +
+facet_grid(. ~Species)
+# Now add a scale
+dd +
+scale_y_continuous(breaks = seq(2, 8, by = 1),
+labels = paste0(2:8, " cm"))
+@
+\end{frame}
+
+
+% --------------------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{gradients}
+<<scale_2, eval = TRUE, fig.width=6, fig.height=4, out.width='.75\\linewidth', tidy = FALSE>>=
+h + geom_histogram( aes(fill = ..count..), color="black") +
+scale_fill_gradient(low="green", high="red")
+@
+\end{frame}
+
+
+
+% --------------------------------------------------------------
+\section*{Publication quality figures}
+\frame{\sectionpage}
+
+% How to save your plots
+% --------------------------------------------------------------
+\begin{frame}[fragile]
+\begin{itemize}
+\item If the plot is on your screen
+<<pub0, eval = FALSE, out.width='.75\\linewidth'>>=
+ggsave('~/path/to/figure/filename.png')
+@
+\item If your plot is assigned to an object
+<<pub1, eval = FALSE, out.width='.75\\linewidth'>>=
+ggsave(plot1, file = "~/path/to/figure/filename.png")
+@
+
+\item Specify a size
+<<pub2, eval = FALSE, out.width='.75\\linewidth', tidy = FALSE>>=
+ggsave(file = "/path/to/figure/filename.png", width = 6,
+height =4)
+@
+\item or any format (pdf, png, eps, svg, jpg)
+<<pub3, eval = FALSE, out.width=".75\\linesewidth">>=
+ggsave(file = "/path/to/figure/filename.eps")
+ggsave(file = "/path/to/figure/filename.jpg")
+ggsave(file = "/path/to/figure/filename.pdf")
+@
+\end{itemize}
+\end{frame}
+
+% --------------------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{Further help}
+\begin{itemize}
+\item You've just scratched the surface with ggplot2.
+\item Practice
+\item Read the docs (either locally in \texttt{R} or at \url{http://docs.ggplot2.org/current/})
+\item Work together
+\end{itemize}
+\includegraphics[scale=.15]{images/chang_book.png}
+\includegraphics[scale=.15]{images/hadley.png}
+\end{frame}
+
+% --------------------------------------------------------------
+% end, hope it was useful.
+\end{document}
