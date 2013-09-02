@@ -1,8 +1,7 @@
 # Introduction to ggplot2
 
-Author: [Karthik Ram](mailto:karthik.ram+ggplot2@gmail.com)
+One of the most powerful features of R is its ability to generate stunning publication quality figures programmatically. Once you have generated and perfected a figure, it becomes really simple to reuse that code over and over with the need to deal with GUI menus.
 
-Here are my [slides](https://github.com/karthikram/ggplot-lecture/blob/master/ggplot.pdf?raw=true) for the Spring 2013 R seminar in Integrative Biology at UC Berkeley. The source file is `ggplot.Rnw`. Feel free to modify and reuse as necessary.
 
 [![slides](slides.png)](https://github.com/karthikram/ggplot-lecture/blob/master/ggplot.pdf?raw=true)
 
@@ -18,6 +17,3 @@ system("pdflatex ggplot.tex")
 ## Suggested readings
 * [Elegant graphics for data analysis](http://www.amazon.com/ggplot2-Ele gant-Graphics-Data-Analysis/dp/0387981403/)  
 *  [R Graphics Cookbook](http://www.amazon.com/R-Graphics-Cookbook-Winston-Chang/dp/1449316956)
-
-# License  
-<a rel="license" href="http://creativecommons.org/licenses/by/2.0/">Creative Commons Attribution 2.0 Generic License</a>.
