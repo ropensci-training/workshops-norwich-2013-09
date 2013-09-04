@@ -11,7 +11,7 @@ Welcome to the GitHub repository for the rOpenSci workshop on data science using
 | Time slot | Topic |
 | -------- | ------- | 
 | 09.00-09.30 | Coffee and Registration  |
-| 09.30-11.00 | Session 1 **[Introduction to R, data structures]**  |
+| 09.30-11.00 | Session 1 **[Introduction to R, data structures]**  [slides](http://ropensci.github.io/workshops-norwich-2013-09/01-introduction/intro_slides/) |
 | 11.00-11.15 | Coffee Break  |
 | 11.15- 13.00 | Session 2 **[Data manipulation in R, functions and other control structures]** |
 | 13:00-13.30 | Lunch  |

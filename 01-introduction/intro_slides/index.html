@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->  <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<title>Introduction to R</title>
+
+	<meta name="description" content="A quick introduction for new R users">
+	<meta name="author" content="Karthik Ram">
+	<meta name="viewport" content="width=1024, user-scalable=no">
+
+	<!-- Core and extension CSS files -->
+	<link rel="stylesheet" href="core/deck.core.css">
+	<link rel="stylesheet" href="extensions/goto/deck.goto.css">
+	<link rel="stylesheet" href="extensions/menu/deck.menu.css">
+	<link rel="stylesheet" href="extensions/navigation/deck.navigation.css">
+	<link rel="stylesheet" href="extensions/status/deck.status.css">
+	<link rel="stylesheet" href="extensions/hash/deck.hash.css">
+	<link rel="stylesheet" href="themes/style/web-2.0.css">
+	<link rel="stylesheet" href="themes/transition/fade.css">
+	<script src="modernizr.custom.js"></script>
+	<style type="text/css">
+.knitr {
+	background-color: #F7F7F7;
+}
+.error {
+	font-weight: bold;
+	color: #FF0000;
+}
+.warning {
+	font-weight: bold;
+}
+.message {
+	font-style: italic;
+}
+.source, .output, .warning, .error, .message {
+	padding: 0.5em 1em;
+}
+.number{
+	color: rgb(21,20,181) ;
+}
+
+.functioncall{
+	color: rgb(32, 74, 147) ;
+}
+
+.string{
+	color: rgb(78, 163, 113) ;
+
+}
+
+.keyword{
+	font-weight: bolder ;
+	color: black;
+}
+
+.argument{
+	color: rgb( 177,63,5) ;
+}
+
+.comment{
+	color: rgb(146, 89, 2) ;
+}
+
+.roxygencomment{
+	color: rgb(0,151,255);
+}
+
+.formalargs{
+	color: rgb(18,182,18);
+}
+
+.eqformalargs{
+	color: rgb(18,182,18);
+}
+
+.assignement{
+	font-weight: bolder;
+	color: rgb(206, 92, 0);
+}
+
+.package{
+	color: rgb(150,182,37);
+}
+
+.slot{
+	font-style:italic;
+}
+
+.symbol{
+	color: black ;
+}
+
+.prompt{
+	color: black ;
+}
+
+</style>
+</head>
+
+<body class="deck-container">
+
+<!-- =====
+Slide Break
+==== -->
+	<section class="slide" id="intro">
+		<div>
+			<hgroup>
+				<h1>Introduction to R</h1>
+				<h3>Karthik Ram</h3>
+				<h3>karthik.ram@berkeley.edu</h3>
+			</hgroup>
+			<p><span style="color:#ccc">M to see all slides, G to go to a specific slide</span></p>
+			<p>
+				<a href="http://inundata.org/R_talks/meetup/Introduction_to_R.pdf" class="download" style="color:#fff">Download a copy</a>
+		</div>
+
+	</section>
+
+<!-- =====
+Slide Break
+==== -->
+
+<section class="slide" id="slide2">
+	<br><br>
+<blockquote>R is a language that's easy to learn badly</blockquote>
+</section>
+
+<!-- =====
+Slide Break
+==== -->
+
+
+
+<section class="slide" id="gui_analysis_is_bad">
+	<h2>Why R?</h2>
+	<h3>The old way...</h3>
+	<img src="images/old-way.png">
+</section>
+
+<!-- =====
+Slide Break
+==== -->
+
+<section class="slide" id="R_is_better">
+	<h2>Why R?</h2>
+		<h3>A better way</h3><br><br>
+<pre class="knitr"><div class="source"><span class="functioncall">glm</span><span class="keyword">(</span><span class="symbol">y</span> <span class="keyword">~</span> <span class="keyword">-</span><span class="number">1</span> <span class="keyword">+</span> <span class="symbol">a</span> <span class="keyword">+</span> <span class="symbol">c</span> <span class="keyword">+</span> <span class="symbol">z</span> <span class="keyword">+</span> <span class="symbol">a</span><span class="keyword">:</span><span class="symbol">z</span><span class="keyword">,</span> <span class="argument">data</span> <span class="argument">=</span> <span class="symbol">mydata</span><span class="keyword">,</span> <span class="argument">maxit</span> <span class="argument">=</span> <span class="number">30</span><span class="keyword">)</span>
+</div></pre>
+<br><br>
+	<h3>This is <u>reproducible</u>, <u>repeatable</u> and will make sense to you (and everyone else) further down the line.</h3>
+</section>
+
+
+<!-- =====
+Slide Break
+==== -->
+
+<section class="slide deck-current" id="rstudio">
+	<h2>Choose an appropriate code editor</h2>
+	<ol>
+		<li>
+			<h3>R Studio</h3>
+			<img src="images/rstudio.png" alt="rstudio">
+		</li>
+	</ol>
+</section>
+
+<!-- =====
+Slide Break
+==== -->
+
+<section class="slide deck-current" id="other-editors">
+	<ol>
+		<li>
+			<h3>TinnR (Windows), Sublime Text (all), Text Wrangler (osx) etc.</h3>
+			<p>All come with key bindings. Pick one that you like.</p>
+			<img src="images/st2.png" alt="I heart Sublime Text">
+		</li>
+	</ol>
+</section>
+
+<!-- =====
+Slide Break
+==== -->
+
+
+<section class="slide" id="establish_workflows">
+	<h2>Establish a workflow</h2><br><br>
+	<h3>A workflow (best suited to you) will help keep your analysis streamlined and reproducible.</h3>
+</section>
+
+<!-- =====
+Slide Break
+==== -->
+
+<section class="slide" id="sample-workflow">
+  <h2>A sample workflow</h2><br><br>
+<table cellspacing=100 cellpadding=100><tr><td>
+<pre><strong>load.r</strong>
+	<p>load all raw untransformed data.</p>
+</pre></td>
+<td valign="center"><br>&nbsp;<strong>→</strong> &nbsp;</td>
+<td>
+<pre><strong>clean.r</strong>
+<br><p>Transform and clean messy data incl. missing values.</p>
+</pre></td>
+<td valign="center"><br>&nbsp;<strong>→</strong> &nbsp;</td>
+<td>
+<pre><strong>functions.r</strong>
+<br><p>Keep all functions in one separate file.</p>
+</pre></td>
+<td valign="center"><br>&nbsp;<strong>→</strong> &nbsp;</td>
+<td>
+<pre><strong>do.r</strong>
+<br><p>Your actual analysis. Load cleaned data and source all functions.</p>
+</pre></td>
+</tr></table>
+<br>
+<pre class="knitr"><div class="source"><span class="comment"># File: do.r</span>
+<span class="functioncall">source</span><span class="keyword">(</span><span class="string">"functions.r"</span><span class="keyword">)</span>
+<span class="functioncall">load</span><span class="keyword">(</span><span class="string">"cleaned_data.rdata"</span><span class="keyword">)</span>
+</div></pre>
+
+</section>
+
+
+<!-- =====
+Slide Break
+==== -->
+
+<section class="slide" id="avoid-restoring">
+<br><br><h3>Avoid restoring workspaces</h3>
+	<img src='images/save_workspace.png'>
+</section>
+
+<!-- =====
+Slide Break
+==== -->
+
+<section class="slide" id="working-dir">
+	<h2>Workflow...</h2>
+ <h3>Set working directores from the console and not scripts</h3>
+<pre class="knitr"><div class="source"><span class="comment"># My_script.r</span>
+<span class="functioncall">setwd</span><span class="keyword">(</span><span class="string">"path/to/dir"</span><span class="keyword">)</span>
+<span class="comment"># Removing any extra objects from my workspace (just in case)</span>
+<span class="functioncall">rm</span><span class="keyword">(</span><span class="argument">list</span> <span class="argument">=</span> <span class="functioncall">ls</span><span class="keyword">(</span><span class="keyword">)</span><span class="keyword">)</span>
+<span class="comment"># Keeps my current file clutter free</span>
+<span class="functioncall">source</span><span class="keyword">(</span><span class="string">"related_r_scripts.r"</span><span class="keyword">)</span>
+</div></pre>
+
+</section>
+<!-- =====
+Slide Break
+==== -->
+
+<section class="slide" id="be_explicit">
+	<h2>Workflow...</h2>
+
+		<h3>Never attach data</h3>
+<pre class="knitr"><div class="source"><strike><span class="functioncall">attach</span><span class="keyword">(</span><span class="symbol">mydata</span><span class="keyword">)</span></strike>
+</div></pre>
+		<br>
+
+		<h3>Always refer to it explicitly</h3>
+	<pre class="knitr"><div class="source"><span class="symbol">mydata</span><span class="keyword">$</span><span class="symbol">column_name</span>
+</div></pre>
+
+
+</section>
+
+
+<!-- =====
+Slide Break
+==== -->
+
+<section class="slide" id="environments">
+	<h2>Environments and Namespaces</h2>
+	<table cellspacing="25%" width="80%"><tr><td>
+
+		<pre class="knitr"><strong>Global Environment</strong><div class="source">
+			<br><span class="symbol">a</span> <span class="assignement">&lt;- </span> <span class="functioncall">rnorm</span><span class="keyword">(</span><span class="number">100</span><span class="keyword">) </span>
+</div></pre>
+</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td>
+
+<pre class="knitr"><strong>Function or Namespace</strong><div class="source">
+	<br><span class="symbol">a</span> <span class="assignement">&lt;-</span> <span class="number">5</span>
+</div></pre>
+</td>
+</tr></table>
+</section>
+
+<!-- =====
+Slide Break
+==== -->
+
+<section class="slide" id="annotate">
+	<h2>Annotate your code clearly</h2>
+	<table cellspacing="20%" width="80%"><tr><td align="left">
+
+<pre class="knitr"><strong>Good ✔</strong><div class="source"><span class="comment"># Script to analyze rainfall data.</span>
+<span class="comment"># loading lib: plyr_1.7.1,  devtools_0.6, ggplot2_0.9.0 </span>
+<span class="functioncall">library</span><span class="keyword">(</span><span class="symbol">stringr</span><span class="keyword">)</span>
+<span class="functioncall">library</span><span class="keyword">(</span><span class="symbol">ggplot2</span><span class="keyword">)</span>
+<span class="functioncall">library</span><span class="keyword">(</span><span class="symbol">plyr</span><span class="keyword">)</span>
+<span class="comment"># reading previously cleaned data</span>
+<span class="functioncall">load</span><span class="keyword">(</span><span class="string">"data_files.rdata"</span><span class="keyword">)</span>
+<span class="comment"># Sourcing functions</span>
+<span class="functioncall">source</span><span class="keyword">(</span><span class="string">"functions.r"</span><span class="keyword">)</span>
+<span class="comment"># Setting up parameters</span>
+<span class="symbol">annual_mean</span> <span class="assignement">&lt;-</span> <span class="number">25</span>
+<span class="comment"># mean value is in cm</span>
+</div></pre>
+</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td>
+
+<pre class="knitr"><strong>Bad ✖</strong><br><div class="source"><span class="functioncall">library</span><span class="keyword">(</span><span class="symbol">ggplot2</span><span class="keyword">)</span>
+<span class="symbol">foo</span> <span class="assignement">&lt;-</span> <span class="functioncall">read.csv</span><span class="keyword">(</span><span class="string">"file1.csv"</span><span class="keyword">)</span>
+<span class="symbol">a</span> <span class="assignement">&lt;-</span> <span class="number">1</span>
+<span class="symbol">b</span> <span class="assignement">&lt;-</span> <span class="number">3</span>
+<span class="symbol">test</span> <span class="assignement">&lt;-</span> <span class="keyword">function</span><span class="keyword">(</span><span class="formalargs">foo2</span><span class="keyword">)</span> <span class="keyword">{</span>
+    <span class="functioncall">return</span><span class="keyword">(</span><span class="symbol">a</span> <span class="keyword">+</span> <span class="symbol">b</span><span class="keyword">)</span>
+<span class="keyword">}</span>
+</div></pre>
+</td>
+</tr></table>
+</section>
+
+<!-- =====
+Slide Break
+==== -->
+
+<section class="slide" id="r-data-types">
+	<h2>Quick guide to R data types</h2>
+<pre class="knitr"><div class="source"><span class="comment"># <b>Vector</b>: (single dimension, all same type)</span>
+<span class="symbol">vec1</span> <span class="assignement">&lt;-</span> <span class="number">1</span><span class="keyword">:</span><span class="number">10</span>
+<span class="functioncall">class</span><span class="keyword">(</span><span class="symbol">vec1</span><span class="keyword">)</span>
+</div><div class="output">## [1] "integer"
+</div><div class="source"><span class="symbol">vec2</span> <span class="assignement">&lt;-</span> <span class="symbol">letters</span><span class="keyword">[</span><span class="number">1</span><span class="keyword">:</span><span class="number">10</span><span class="keyword">]</span>
+<span class="functioncall">class</span><span class="keyword">(</span><span class="symbol">vec2</span><span class="keyword">)</span>
+</div><div class="output">## [1] "character"
+<span class="comment"># <b>Data Frame</b>: Each column is a vector, but adjacent vectors can hold different things</span>
+<span class="comment"># <b>Matrix</b>: Just like a data.frame except it's all numeric</span>
+<span class="comment"># <b>List</b>: (any dimension, mix and match)</span>
+</div><div class="source"><span class="symbol">l1</span> <span class="assignement">&lt;-</span> <span class="functioncall">list</span><span class="keyword">(</span><span class="argument">A</span> <span class="argument">=</span> <span class="functioncall">data.frame</span><span class="keyword">(</span><span class="argument">x</span> <span class="argument">=</span> <span class="number">1</span><span class="keyword">:</span><span class="number">10</span><span class="keyword">,</span> <span class="argument">y</span> <span class="argument">=</span> <span class="functioncall">rnorm</span><span class="keyword">(</span><span class="number">10</span><span class="keyword">)</span><span class="keyword">)</span><span class="keyword">,</span>
+    <span class="argument">B</span> <span class="argument">=</span> <span class="number">1</span><span class="keyword">,</span> <span class="argument">C</span> <span class="argument">=</span> <span class="symbol">letters</span><span class="keyword">[</span><span class="number">1</span><span class="keyword">:</span><span class="number">3</span><span class="keyword">]</span><span class="keyword">)</span>
+<span class="functioncall">str</span><span class="keyword">(</span><span class="symbol">l1</span><span class="keyword">)</span>
+</div><div class="output">## List of 3
+  $ A:'data.frame':	10 obs. of  2 variables:
+   ..$ x: int [1:10] 1 2 3 4 5 6 7 8 9 10
+   ..$ y: num [1:10] 0.618 0.519 0.343 0.428 -0.885 ...
+  $ B: num 1
+  $ C: chr [1:3] "a" "b" "c"
+</div></pre>
+</section>
+
+<!-- =====
+Slide Break
+==== -->
+
+<section class="slide" id="seeking-help">
+	<h2>Finding Help</h2>
+	<h3>Locally</h3>
+	<pre><code>
+		?function_name
+		??function_name
+		RSiteSearch("function_name")
+	</code></pre>
+	<h3>Online</h3>
+	<table width="100%"><tr>
+		<td align="left"><strong>StackOverflow.com/questions/tagged/r</strong>
+	<img src="images/stack_overflow.png"></td>
+	<td align="center"><strong>Rseek.org</strong>
+	<img src="images/rseek.png"></td>
+	</tr></table>
+</section>
+
+<!-- =====
+Slide Break
+==== -->
+
+<section class="slide" id="session_info">
+	<h2><code>sessionInfo()</code></h2>
+<pre class="knitr"><div class="source"><span class="functioncall">sessionInfo</span><span class="keyword">(</span><span class="keyword">)</span>
+</div><div class="output">## R version 2.14.2 (2012-02-29)
+ Platform: x86_64-apple-darwin9.8.0/x86_64 (64-bit)
+
+ locale:
+ [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+
+ attached base packages:
+ [1] graphics  grDevices utils     datasets  stats     methods   base
+
+ other attached packages:
+ [1] knitr_0.3      formatR_0.3-4  devtools_0.6   plyr_1.7.1
+ [5] reshape2_1.2.1 ggplot2_0.9.0
+
+ loaded via a namespace (and not attached):
+  [1] codetools_0.2-8    colorspace_1.1-1   dichromat_1.2-4
+  [4] digest_0.5.1       evaluate_0.4.1     gdata_2.8.2
+  [7] grid_2.14.2        gtools_2.6.2       highlight_0.3.1
+ [10] MASS_7.3-17        memoise_0.1        munsell_0.3
+ [13] parser_0.0-14      proto_0.3-9.2      RColorBrewer_1.0-5
+ [16] Rcpp_0.9.10        RCurl_1.91-1       scales_0.2.0
+ [19] stringr_0.6        tools_2.14.2
+</div></pre>
+
+
+<!-- =====
+Slide Break
+==== -->
+
+
+</section>
+
+<section class="slide" id="dput">
+	<h2>Use <code>dput()</code> to share some data</h2>
+<pre class="knitr"><div class="source"><span class="functioncall">dput</span><span class="keyword">(</span><span class="functioncall">head</span><span class="keyword">(</span><span class="symbol">mtcars</span><span class="keyword">)</span><span class="keyword">)</span>
+</div><div class="output">structure(list(mpg = c(21, 21, 22.8, 21.4, 18.7, 18.1), cyl = c(6,
+ 6, 4, 6, 8, 6), disp = c(160, 160, 108, 258, 360, 225), hp = c(110,
+ 110, 93, 110, 175, 105), drat = c(3.9, 3.9, 3.85, 3.08, 3.15,
+ 2.76), wt = c(2.62, 2.875, 2.32, 3.215, 3.44, 3.46), qsec = c(16.46,
+ 17.02, 18.61, 19.44, 17.02, 20.22), vs = c(0, 0, 1, 1, 0, 1),
+     am = c(1, 1, 1, 0, 0, 0), gear = c(4, 4, 4, 3, 3, 3), carb = c(4,
+     4, 1, 1, 2, 1)), .Names = c("mpg", "cyl", "disp", "hp", "drat",
+ "wt", "qsec", "vs", "am", "gear", "carb"), row.names = c("Mazda RX4",
+ "Mazda RX4 Wag", "Datsun 710", "Hornet 4 Drive", "Hornet Sportabout",
+ "Valiant"), class = "data.frame")
+</div></pre>
+</section>
+
+
+
+
+<!-- =====
+Slide Break
+==== -->
+
+<section class="slide" id="rprofile1">
+	<h2>Leverage your <code>.rprofile</code></h2>
+	<h3>Set <code>options</code></h3>
+<pre class="knitr"><div class="source"><span class="functioncall">options</span><span class="keyword">(</span><span class="argument">max.print</span> <span class="argument">=</span> <span class="number">2000</span><span class="keyword">)</span>
+<span class="functioncall">options</span><span class="keyword">(</span><span class="argument">prompt</span> <span class="argument">=</span> <span class="string">"$ "</span><span class="keyword">)</span>
+<span class="functioncall">options</span><span class="keyword">(</span><span class="argument">stringsAsFactors</span> <span class="argument">=</span> <span class="argument">FALSE</span><span class="keyword">)</span>
+<span class="comment"># Store API keys</span>
+<span class="functioncall">options</span><span class="keyword">(</span><span class="argument">PLOSKey</span> <span class="argument">=</span> <span class="string">"My_secret_key"</span><span class="keyword">)</span>
+
+</div></pre>
+
+<pre><code>
+	See <strong>?options</strong> for more information on settings
+	<strong>options()</strong> to list current settings
+</code></pre>
+</section>
+
+<!-- =====
+Slide Break
+==== -->
+
+<section class="slide" id="rprofile2">
+	<h2>Leverage your <code>.rprofile</code></h2>
+	<h3>Load frequently used libraries</h3>
+<pre class="knitr"><div class="source">
+<span class="functioncall">library</span><span class="keyword">(</span><span class="symbol">ggplot2</span><span class="keyword">)</span>
+<span class="functioncall">library</span><span class="keyword">(</span><span class="symbol">stringr</span><span class="keyword">)</span>
+<span class="functioncall">library</span><span class="keyword">(</span><span class="symbol">plyr</span><span class="keyword">)</span>
+<span class="functioncall">library</span><span class="keyword">(</span><span class="symbol">devtools</span><span class="keyword">)</span>
+</div></pre>
+</section>
+
+<!-- =====
+Slide Break
+==== -->
+
+<section class="slide" id="rprofile3">
+	<h2>Leverage your <code>.rprofile</code></h2>
+	<h3>Load custom functions</h3>
+<pre class="knitr"><div class="source"><span class="comment"># A function that tells me which packages are out of date</span>
+<span class="symbol">check.packages</span> <span class="assignement">&lt;-</span> <span class="keyword">function</span><span class="keyword">(</span><span class="keyword">)</span> <span class="keyword">{</span>
+    <span class="keyword">if</span> <span class="keyword">(</span><span class="keyword">!</span><span class="functioncall">is.null</span><span class="keyword">(</span><span class="package">utils</span><span class="keyword">::</span><span class="functioncall">old.packages</span><span class="keyword">(</span><span class="keyword">)</span><span class="keyword">)</span><span class="keyword">)</span> <span class="keyword">{</span>
+        <span class="symbol">old_packages</span> <span class="assignement">&lt;-</span> <span class="package">utils</span><span class="keyword">::</span><span class="functioncall">old.packages</span><span class="keyword">(</span><span class="keyword">)</span>
+        <span class="functioncall">cat</span><span class="keyword">(</span><span class="string">"Notification:"</span><span class="keyword">,</span> <span class="functioncall">dim</span><span class="keyword">(</span><span class="symbol">old_packages</span><span class="keyword">)</span><span class="keyword">[</span><span class="number">1</span><span class="keyword">]</span><span class="keyword">,</span> <span class="string">"packages are out of date \n"</span><span class="keyword">)</span>
+        <span class="functioncall">cat</span><span class="keyword">(</span><span class="functioncall">unname</span><span class="keyword">(</span><span class="symbol">old_packages</span><span class="keyword">[</span><span class="keyword">,</span> <span class="number">1</span><span class="keyword">]</span><span class="keyword">)</span><span class="keyword">,</span> <span class="argument">sep</span> <span class="argument">=</span> <span class="string">","</span><span class="keyword">,</span> <span class="string">"\n"</span><span class="keyword">)</span>
+    <span class="keyword">}</span>
+    <span class="keyword">if</span><span class="keyword"></span> <span class="keyword">(</span><span class="functioncall">is.null</span><span class="keyword">(</span><span class="package">utils</span><span class="keyword">::</span><span class="functioncall">old.packages</span><span class="keyword">(</span><span class="keyword">)</span><span class="keyword">)</span><span class="keyword">)</span> <span class="keyword">{</span>
+        <span class="functioncall">cat</span><span class="keyword">(</span><span class="string">"All packages are current \n"</span><span class="keyword">)</span>
+    <span class="keyword">}</span>
+<span class="keyword">}</span>
+</div></pre>
+</section>
+
+<!-- =====
+Slide Break
+==== -->
+
+<section class="slide" id="rprofile4">
+	<h2>Word of caution regarding<code>.rprofile</code></h2>
+
+<strong>While the <code>.rprofile</code> does make life convenient, remember that any code/settings stored there are not reproducible by others. <br><br> Be sure to test your code without loading the file before sharing/deploying code.</strong><br><br>
+<pre class="knitr"><div class="source">
+<span class="comment"># To load R without the .rprofile</span>
+<code>R -- vanilla</code>
+</div></pre>
+<br><br>
+<p>Thanks to <a href="http://had.co.nz">Hadley</a> for pointing this out oversight.</p>
+</section>
+
+<!-- =====
+Slide Break
+==== -->
+
+<section class="slide" id="reading_data">
+	<h2>Reading Data</h2>
+	<h3>from flat text files</h3>
+	<pre><code>read.table</pre></code>
+	<h3>from databases</h3>
+	<pre><code>Use packages RODBC, RMySQL</pre></code>
+	<h3>from cloud storage</h3>
+	<pre><code>Amazon S3, Google Docs, Dropbox etc.</pre></code>
+
+</section>
+
+<!-- =====
+Slide Break
+==== -->
+
+<section class="slide" id="saving_data">
+	<h2>Saving Data</h2>
+	<strong>Short-term</strong>
+<pre class="knitr"><div class="source"><span class="functioncall">save</span><span class="keyword">(</span><span class="symbol">data</span><span class="keyword">,</span> <span class="argument">file</span> <span class="argument">=</span> <span class="string">"slots.rdata"</span><span class="keyword">)</span>
+</div></pre>
+<strong>Long-term</strong>
+<pre class="knitr"><div class="source"><span class="functioncall">write.table</span><span class="keyword">(</span><span class="symbol">data</span><span class="keyword">,</span> <span class="argument">file</span> <span class="argument">=</span> <span class="string">"slots-3.csv"</span><span class="keyword">,</span> <span class="argument">sep</span> <span class="argument">=</span> <span class="string">","</span><span class="keyword">,</span>
+    <span class="argument">row</span> <span class="argument">=</span> <span class="symbol">F</span><span class="keyword">)</span>
+</div></pre>
+</section>
+
+<!-- =====
+Slide Break
+==== -->
+<section class="slide" id="split_apply">
+	<h2>Manipulating Data - Plyr</h2>
+	<strong> The Split-Apply strategy</strong>
+<img src="images/splitapply.png" alt="The Split-Apply Strategy slide from Hadley Wickham">
+<p><a href="ttp://www.jstatsoft.org/v40/i01/">Hadley Wickham (2011). The Split-Apply-Combine Strategy for Data Analysis.
+  JSS, 40(1), 1-29.</a> for more details</p>
+</section>
+
+
+<!-- =====
+Slide Break
+==== -->
+
+<section class="slide" id="ddply_example">
+	<h2>ddply example</h2>
+	<br><br>
+<pre class="knitr"><div class="source"><span class="symbol">data</span> <span class="assignement">&lt;-</span> <span class="functioncall">data.frame</span><span class="keyword">(</span><span class="argument">x</span> <span class="argument">=</span> <span class="functioncall">c</span><span class="keyword">(</span><span class="string">"a"</span><span class="keyword">,</span> <span class="string">"a"</span><span class="keyword">,</span> <span class="string">"b"</span><span class="keyword">,</span> <span class="string">"b"</span><span class="keyword">,</span> <span class="string">"c"</span><span class="keyword">,</span>
+    <span class="string">"c"</span><span class="keyword">)</span><span class="keyword">,</span> <span class="argument">y</span> <span class="argument">=</span> <span class="functioncall">c</span><span class="keyword">(</span><span class="number">2</span><span class="keyword">,</span> <span class="number">4</span><span class="keyword">,</span> <span class="number">0</span><span class="keyword">,</span> <span class="number">5</span><span class="keyword">,</span> <span class="number">5</span><span class="keyword">,</span> <span class="number">10</span><span class="keyword">)</span><span class="keyword">)</span>
+</div></pre>
+
+
+<pre class="knitr"><div class="source"><span class="functioncall">ddply</span><span class="keyword">(</span><span class="symbol">data</span><span class="keyword">,</span> <span class="functioncall">.</span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">)</span><span class="keyword">,</span> <span class="symbol">summarise</span><span class="keyword">,</span> <span class="argument">y</span> <span class="argument">=</span> <span class="functioncall">mean</span><span class="keyword">(</span><span class="symbol">y</span><span class="keyword">)</span><span class="keyword">)</span>
+</div></pre>
+</section>
+
+
+<!-- =====
+Slide Break
+==== -->
+
+
+<section class="slide" id="plyr_syntax">
+	<h2>Plyr syntax</h2>
+	<br>
+	<strong>Function naming scheme: <span style="color: #eb2b52;">first letter of source R object</span> + <span style="color: #2182fe;">first letter of output R object</span> + ply</strong><br><br>
+<pre class="knitr"><div class="source"><span class="symbol">result</span> <span class="assignement">&lt;-</span> <span class="functioncall">ddply</span><span class="keyword">(</span><span class="symbol">data</span><span class="keyword">,</span> <span class="symbol">variable</span><span class="keyword">,</span> <span class="symbol">summarise</span><span class="keyword">,</span> <span class="argument">n</span> <span class="argument">=</span> <span class="functioncall">sum</span><span class="keyword">(</span><span class="symbol">n</span><span class="keyword">)</span><span class="keyword">)</span>
+</div></pre>
+
+<pre class="knitr"><div class="source"><span class="symbol">result</span> <span class="assignement">&lt;-</span> <span class="functioncall">llply</span><span class="keyword">(</span><span class="symbol">list_name</span><span class="keyword">,</span> <span class="symbol">function_name</span><span class="keyword">)</span>
+</div></pre>
+</section>
+
+
+
+
+<!-- =====
+Slide Break
+==== -->
+
+<section class="slide" id="reshaping_data">
+	<h2>reshape2 allows you to reshape data into any format possible</h2>
+<pre class="knitr"><div class="source"><span class="functioncall">dcast</span><span class="keyword">(</span><span class="symbol">melted_data</span><span class="keyword">,</span> <span class="symbol">temp</span> <span class="keyword">~</span> <span class="symbol">light</span><span class="keyword">,</span> <span class="symbol">length</span><span class="keyword">)</span>
+</div></pre>
+
+
+<pre class="knitr"><div class="source"><span class="functioncall">dcast</span><span class="keyword">(</span><span class="symbol">melted_data</span><span class="keyword">,</span> <span class="symbol">temp</span> <span class="keyword">~</span> <span class="symbol">light</span><span class="keyword">,</span> <span class="symbol">mean</span><span class="keyword">)</span>
+</div></pre>
+
+
+<pre class="knitr"><div class="source"><span class="functioncall">dcast</span><span class="keyword">(</span><span class="symbol">melted_data</span><span class="keyword">,</span> <span class="symbol">temp</span> <span class="keyword">~</span> <span class="symbol">light</span><span class="keyword">,</span> <span class="symbol">custom_function</span><span class="keyword">)</span>
+</div></pre>
+</section>
+
+<!-- =====
+Slide Break
+==== -->
+
+<section class="slide" id="melt_example">
+	<h2>Example of melting and casting</h2>
+<pre class="knitr"><div class="source"><span class="symbol">test_data</span> <span class="assignement">&lt;-</span> <span class="functioncall">data.frame</span><span class="keyword">(</span><span class="argument">id</span> <span class="argument">=</span> <span class="number">1</span><span class="keyword">:</span><span class="number">9</span><span class="keyword">,</span> <span class="argument">category</span> <span class="argument">=</span> <span class="functioncall">factor</span><span class="keyword">(</span><span class="functioncall">rep</span><span class="keyword">(</span><span class="functioncall">sample</span><span class="keyword">(</span><span class="symbol">letters</span><span class="keyword">[</span><span class="number">1</span><span class="keyword">:</span><span class="number">3</span><span class="keyword">]</span><span class="keyword">)</span><span class="keyword">,</span>
+    <span class="number">3</span><span class="keyword">)</span><span class="keyword">)</span><span class="keyword">,</span> <span class="argument">treatment</span> <span class="argument">=</span> <span class="functioncall">rep</span><span class="keyword">(</span><span class="functioncall">sample</span><span class="keyword">(</span><span class="functioncall">c</span><span class="keyword">(</span><span class="string">"control"</span><span class="keyword">,</span> <span class="string">"trt_1"</span><span class="keyword">,</span> <span class="string">"trt_2"</span><span class="keyword">)</span><span class="keyword">)</span><span class="keyword">,</span>
+    <span class="number">3</span><span class="keyword">)</span><span class="keyword">,</span> <span class="argument">price_index</span> <span class="argument">=</span> <span class="functioncall">rnorm</span><span class="keyword">(</span><span class="number">9</span><span class="keyword">)</span> <span class="keyword">*</span> <span class="number">200</span><span class="keyword">,</span> <span class="argument">prev_yr_index</span> <span class="argument">=</span> <span class="functioncall">rnorm</span><span class="keyword">(</span><span class="number">9</span><span class="keyword">)</span> <span class="keyword">*</span>
+    <span class="number">200</span><span class="keyword">)</span>
+</div></pre>
+
+<pre class="knitr"><div class="source"><span class="symbol">melted_data</span> <span class="assignement">&lt;-</span> <span class="functioncall">melt</span><span class="keyword">(</span><span class="symbol">test_data</span><span class="keyword">,</span> <span class="argument">id.vars</span> <span class="argument">=</span> <span class="number">1</span><span class="keyword">:</span><span class="number">3</span><span class="keyword">)</span>
+</div></pre>
+
+
+<pre class="knitr"><div class="source"><span class="functioncall">dcast</span><span class="keyword">(</span><span class="symbol">melted_data</span><span class="keyword">,</span> <span class="symbol">category</span> <span class="keyword">+</span> <span class="symbol">treatment</span> <span class="keyword">~</span> <span class="symbol">variable</span><span class="keyword">,</span>
+    <span class="symbol">length</span><span class="keyword">)</span>
+<span class="functioncall">dcast</span><span class="keyword">(</span><span class="symbol">melted_data</span><span class="keyword">,</span> <span class="symbol">category</span> <span class="keyword">+</span> <span class="symbol">treatment</span> <span class="keyword">~</span> <span class="symbol">variable</span><span class="keyword">,</span>
+    <span class="symbol">mean</span><span class="keyword">)</span>
+</div></pre>
+
+</section>
+
+<!-- =====
+Slide Break
+==== -->
+<section class="slide" id="writing_functions">
+	<h2>Writing Functions</h2>
+	<blockquote>If you have to repeat the same 3-4 lines of code more than once, turn it into a function</blockquote>
+</section>
+
+<!-- =====
+Slide Break
+==== -->
+
+
+<section class="slide" id="repositories">
+	<h2>Use a version control system like git</h2>
+<img src='images/git.png' alt="Cover of Jon Loeliger's book">
+</section>
+
+<!-- =====
+Slide Break
+==== -->
+
+<section class="slide" id="report-generation">
+	<h2>Dynamic report generation</h2>
+<img src="images/knitr.png">
+<pre><code>
+	<span class="comment"># As easy as:</span>
+	knit('report.rnw')
+	<br>
+	<span class="comment"># All the syntax in this talk was generated using knitr</span>
+</code></pre>
+</section>
+
+<!-- =====
+Slide Break
+==== -->
+
+<section class="slide" id="r_cloud">
+	<h2>R on the cloud</h2>
+	<br>
+	<h3>R scales really well on cloud platforms (AWS, most anything)</h3>
+<img src="images/awslogo.png" alt="Amazon web services">
+<br>
+<h3>R can interact with any web service that has an API</h3>
+</section>
+
+
+<!-- =====
+Slide Break
+==== -->
+
+
+<section class="slide" id="fin">
+	<h1>rstudio.ropensci.org</h1>
+</section>
+
+<!-- =====
+END PRESENTATION
+==== -->
+
+
+<!-- deck.navigation snippet -->
+<a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+<a href="#" class="deck-next-link" title="Next">&#8594;</a>
+
+<!-- deck.status snippet -->
+<p class="deck-status">
+	<span class="deck-status-current"></span>
+	/
+	<span class="deck-status-total"></span>
+</p>
+
+<!-- deck.goto snippet -->
+<form action="." method="get" class="goto-form">
+	<label for="goto-slide">Go to slide:</label>
+	<input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+	<datalist id="goto-datalist"></datalist>
+	<input type="submit" value="Go">
+</form>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+
+<!-- Grab CDN jQuery, with a protocol relative URL; fall back to local if offline -->
+<script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+<script>window.jQuery || document.write('<script src="jquery-1.7.min.js"><\/script>')</script>
+
+<!-- Deck Core and extensions -->
+<script src="core/deck.core.js"></script>
+<script src="extensions/hash/deck.hash.js"></script>
+<script src="extensions/menu/deck.menu.js"></script>
+<script src="extensions/goto/deck.goto.js"></script>
+<script src="extensions/status/deck.status.js"></script>
+<script src="extensions/navigation/deck.navigation.js"></script>
+
+<!-- Initialize the deck -->
+<script>
+$(function() {
+	$.deck('.slide');
+});
+</script>
+
+</body>
+</html>
