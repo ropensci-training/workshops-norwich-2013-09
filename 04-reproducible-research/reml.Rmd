@@ -60,7 +60,8 @@ Perhaps we want date formats
 ```{r}
 meta <- list("catch" = list("catch", "Global Landings of fish", "tonnes"),
              "year" = list("year", "the year for which data was reported", "YYYY"),
-             "a3_code" = list("a3_code" = "3 digit country code", codes))
+             "a3_code" = list("a3_code", "3 digit country code", codes))
+#dat$a3_code = as.factor(dat$a3_code)
 ```
 
 ```{r}
@@ -78,7 +79,7 @@ eml_write(dat = dat, meta, title = "Landings Data",
 
 ```{r}
 eml_publish("landings.xml", 
-            description=file_description, 
+            description=description, 
             categories="Ecology", 
             tags="fisheries", 
             destination = "figshare")
