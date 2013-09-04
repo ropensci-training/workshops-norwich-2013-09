@@ -59,7 +59,7 @@ Perhaps we want date formats
 
 ```{r}
 meta <- list("catch" = list("catch", "Global Landings of fish", "tonnes"),
-             "year" = list("year", "the year for which data was reported", "YYYY")
+             "year" = list("year", "the year for which data was reported", "YYYY"),
              "a3_code" = list("a3_code" = "3 digit country code", codes))
 ```
 
