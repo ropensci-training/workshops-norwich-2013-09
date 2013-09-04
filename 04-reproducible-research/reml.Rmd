@@ -58,16 +58,19 @@ Perhaps we want date formats
 
 
 ```{r}
-col_meta <- c("catch" = "Global Landings of fish", "year" = "year", "a3_code" = "3 digit country code")
-unit_meta <- list("catch" = "tonnes", year = "YYYY", "a3_code" =  codes)
+meta <- list("catch" = list("catch", "Global Landings of fish", "tonnes"),
+             "year" = list("year", "the year for which data was reported", "YYYY")
+             "a3_code" = list("a3_code" = "3 digit country code", codes))
 ```
 
 ```{r}
 require(reml)
-eml$set(contact_givenName = "Carl", contact_surName = "Boettiger", contact_email = "cboettig@ropensci.org")
-file_description = "Landings data for several species by year, from the OpenFisheries database"
+description = "Landings data for several species by year, from the OpenFisheries database"
 
-eml_write(dat = dat, col_meta, unit_meta, .title = "Landings Data", file = "landings.xml", file_description = file_description)
+eml_write(dat = dat, meta, title = "Landings Data", 
+          description = description, 
+          creator = "Karthik Ram <karthik@ropensci.org>", 
+          file = "landings.xml")
 ```
 
 
