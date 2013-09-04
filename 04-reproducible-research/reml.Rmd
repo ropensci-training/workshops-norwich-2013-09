@@ -61,7 +61,13 @@ Perhaps we want date formats
 meta <- list("catch" = list("catch", "Global Landings of fish", "tonnes"),
              "year" = list("year", "the year for which data was reported", "YYYY"),
              "a3_code" = list("a3_code", "3 digit country code", codes))
-#dat$a3_code = as.factor(dat$a3_code)
+```
+
+We must make sure that column classes are correct.  
+
+```{r}
+# dat$year = as.Date(as.character(dat$year), format="%Y")
+dat$a3_code = as.factor(dat$a3_code)
 ```
 
 ```{r}
@@ -82,7 +88,8 @@ eml_publish("landings.xml",
             description=description, 
             categories="Ecology", 
             tags="fisheries", 
-            destination = "figshare")
+            destination = "figshare",
+            visibility="public")
 ```
 
 
