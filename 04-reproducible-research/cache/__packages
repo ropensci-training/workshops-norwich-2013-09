@@ -1,5 +1,6 @@
 base
 dismo
+foreach
 foreign
 knitr
 lattice
@@ -7,3 +8,4 @@ maptools
 raster
 rgbif
 sp
+taxize

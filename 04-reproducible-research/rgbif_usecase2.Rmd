@@ -1,6 +1,8 @@
 ## rgbif use case No. 2 - Biodiversity comparisons across cities
 
-In this example, we compare biodiversity in different cities using GBIF data from rgbif.
+In this example, we compare biodiversity in different regsions using GBIF data from rgbif.
+
+This example can be done using BISON data as well with our rbison package.
 
 ```{r defaults, eval=TRUE, echo=FALSE, cache=TRUE}
 opts_chunk$set(comment=NA, warning=FALSE, message=FALSE, fig.width=7, fig.height=6)
