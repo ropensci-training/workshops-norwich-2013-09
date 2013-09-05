@@ -1,8 +1,12 @@
-# Introduction to `ggplot2`
+# Section 03 - Data visualization with R  
+*time : 13.30-15.00*
 
 One of the most powerful features of R is its ability to generate very high quality publication quality figures programmatically. Once you have generated and perfected a figure, it becomes really simple to reuse that code over and over with the need to deal with GUI menus.
 
 [![](slides.png)](https://github.com/ropensci/norwich-2013-09/blob/master/ggplot.pdf?raw=true)
+
+For this section open the PDF separately and follow along.
+
 
 ---
 
