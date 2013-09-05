@@ -7,8 +7,9 @@ In this section we will work with a couple more example datasets and use it to c
 
 | Topic | exercise |
 | ------ | --------|
+| Introduction to writing functions | exercise |
 | The apply family of functions | exercise |
 | Using plyr and reshape to restructure your data | exercise |
-| Introduction to writing functions | exercise |
+
 
 
