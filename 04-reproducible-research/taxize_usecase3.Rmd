@@ -1,0 +1,43 @@
+## taxize use case No. 3 - Merge multiple data sets with potentially different taxonomy
+
+##### 
+##### ! DOESN'T WORK YET !
+##### 
+
+```{r defaults, eval=TRUE, echo=FALSE}
+opts_chunk$set(comment=NA, warning=FALSE, message=FALSE, fig.width=7, fig.height=6)
+```
+
+### Load libraries
+
+```{r load}
+library(taxize)
+library(ggplot2)
+```
+
+### Download two datasets
+
+```{r datasets, cache=TRUE}
+ds1 <- 
+ds2 <- 
+```
+
+### Check names in both datasets against the same source
+
+```{r checknames, cache=TRUE, message=FALSE, warning=FALSE}
+
+```
+
+### Merge two datasets
+
+```{r, cache=TRUE}
+both <- merge(ds1, ds2, by='afsfsfasf')
+head(both)
+```
+
+### Plot some data from the two
+
+```{r, cache=TRUE}
+ggplot(both, aes()) + 
+  geom_point()
+```
