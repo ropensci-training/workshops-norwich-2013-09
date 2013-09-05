@@ -31,11 +31,11 @@ library("Rdocumentation")
 ```
 
 
-# Seeking help
+# Seeking help from peers
 
 * Always share some example data to help others replicate your problem.
 
-for example, the function `dput` can help recreate R objects by simply pasting the output into another R terminal. Just `dput` a few rows for testing purposes.
+for example, the function `dput()` can help recreate R objects by simply pasting the output into another R terminal. Just `dput` a few rows for testing purposes.
 
 e.g.
 
@@ -52,10 +52,18 @@ structure(list(Sepal.Length = c(5.1, 4.9, 4.7, 4.6, 5, 5.4),
 ```
 
 
-* Use the `sessionInfo` function to share your current namespace and package versions. Super helpful for others to help debug your issues.
+* Use the `sessionInfo()` function to share your current namespace and package versions. Super helpful for others to help debug your issues.
+
+The `knitr` function `stitch()` automatically includes this information. Try it on any example R script.
+
+```coffee
+stitch("my_script.R")
+```
 
 
 ## search StackOverflow
+
+9 times out of 10, the answers you are seeking have already been answered on stack overflow. Search using the `[r]`
 
 [http://stackoverflow.com/questions/tagged/r](http://stackoverflow.com/questions/tagged/r)
 
