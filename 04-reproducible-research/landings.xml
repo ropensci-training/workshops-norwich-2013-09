@@ -1,0 +1,101 @@
+<eml:eml xmlns:eml="eml://ecoinformatics.org/eml-2.1.1" xmlns:ds="eml://ecoinformatics.org/dataset-2.1.1" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stmml="http://www.xml-cml.org/schema/stmml-1.1" packageId="reml_8703354.06810045" system="reml">
+  <dataset>
+    <title>Landings Data</title>
+    <creator>
+      <individualName>
+        <givenName>Karthik</givenName>
+        <surName>Ram</surName>
+      </individualName>
+      <electronicMailAddress>karthik@ropensci.org</electronicMailAddress>
+    </creator>
+    <pubDate>2013-09-05</pubDate>
+    <intellectualRights>&lt;a rel='license' property='http://creativecommons.org/ns#license' href='http://creativecommons.org/publicdomain/zero/1.0/'&gt;CC0&lt;/a&gt;</intellectualRights>
+    <contact>
+      <individualName>
+        <givenName>Karthik</givenName>
+        <surName>Ram</surName>
+      </individualName>
+      <electronicMailAddress>karthik@ropensci.org</electronicMailAddress>
+    </contact>
+    <dataTable>
+      <entityName>Landings Data</entityName>
+      <entityDescription>Landings data for several species by year, from the OpenFisheries database</entityDescription>
+      <physical>
+        <objectName>Landings_Data.csv</objectName>
+        <size>6280</size>
+        <characterEncoding>en_US.UTF-8</characterEncoding>
+        <dataFormat>
+          <textFormat>
+            <numHeaderLines>1</numHeaderLines>
+            <numFooterLines>0</numFooterLines>
+            <recordDelimiter>\r\n</recordDelimiter>
+            <attributeOrientation>column</attributeOrientation>
+            <simpleDelimited>
+              <fieldDelimiter>,</fieldDelimiter>
+            </simpleDelimited>
+          </textFormat>
+        </dataFormat>
+      </physical>
+      <attributeList>
+        <attribute>
+          <attributeName>catch</attributeName>
+          <attributeDefinition>Global Landings of fish</attributeDefinition>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>tonnes</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>year</attributeName>
+          <attributeDefinition>the year for which data was reported</attributeDefinition>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>YYYY</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>a3_code</attributeName>
+          <attributeDefinition>3 digit country code</attributeDefinition>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <enumeratedDomain>
+                  <codeDefinition>
+                    <code>TUX</code>
+                    <definition>Scombroidei</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>COD</code>
+                    <definition>Gadus morhua</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>VET</code>
+                    <definition>Engraulis ringens</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>NPA</code>
+                    <definition>Engraulis mordax</definition>
+                  </codeDefinition>
+                </enumeratedDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+        </attribute>
+      </attributeList>
+      <caseSensitive>yes</caseSensitive>
+      <numberOfRecords>240</numberOfRecords>
+    </dataTable>
+  </dataset>
+</eml:eml>
