@@ -1,0 +1,26 @@
+## rvertnet use case - Plot species occurrence data
+
+### Load libraries
+
+```{r load}
+library(rvertnet)
+library(ggplot2)
+```
+
+### Define a species list
+
+```{r splist, cache=TRUE}
+splist <- splist <- c("Accipiter erythronemius","Junco hyemalis","Aix sponsa","Haliaeetus leucocephalus","Corvus corone","Threskiornis molucca","Merops malimbicus")
+```
+
+### Search for occurrences in VertNet
+
+```{r splist, cache=TRUE}
+out <- lapply(splist, function(x) vertoccurrence(t=x, grp="bird", num=500))
+```
+
+### Plot data
+
+```{r splist, cache=TRUE}
+vertmap(out)
+```
