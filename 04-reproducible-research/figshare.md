@@ -1,9 +1,9 @@
 
-# Depositing and reading data with fig**share**
+# Depositing and reading data with figshare
 
 ![](figshare-main.png)
 
-In this demo we will learn how to share data and results after we have acquired, manipulated and processed them for a study. 
+In this demo we will learn how to share data and results after we have acquired, manipulated and processed them for an analysis. 
 
 
 ## What is figshare?  
@@ -86,18 +86,31 @@ fs_browse(mine=TRUE)
 # Browse all your files
 ```
 #Note that we can easily grab the ids with the wrapper function fs_ids:
+
+```coffee
 fs_ids(all_mine)
+```
 
 # Delete non-public files
+
+Remember that once you've made a file public, you can't delete it. 
+
+```coffee
 fs_delete(id)
 ```
-This is an excel file I found on the web.
+
+## Retrieving other data from the web
+
+Through a random search on fgishare for popualtion count data I found this Excel file on the web.
+
+```
 http://figshare.com/articles/_GO_model_based_gene_set_analysis_MGSA_25_using_the_Ontologizer_65_/472564
+```
 
 Let's download that one with:
 
-```
-# Read someone elses data back
+```coffee
+# Using the id: 41e3440
 file <- fs_download(472564, urls_only=T)
 library(gdata)
 df <- read.xls(file, sheet=1, header=T)
@@ -105,10 +118,11 @@ df <- read.xls(file, sheet=1, header=T)
 ```
 
 
-## Reading the data back  
-
-
 ## A workflow involving figshare
 
-
+* Load up your own data/acquire other data from the web
+* clean and manipulate the data
+* Work on your analysis
+* Generate results (including tables and figures)
+* Publish to figshare
 
