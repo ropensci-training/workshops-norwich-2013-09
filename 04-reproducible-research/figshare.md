@@ -51,13 +51,14 @@ fs_author_search("Boettiger")
 
 ```coffee
 ## First create an identifier on figshare
-id <- fs_create("TGAG test dataset", "File contains made up data that should not used for any real world use case", "dataset")
+id <- fs_create("TGAG test dataset", "File contains made up data", "dataset")
 data(mtcars)
 write.csv(mtcars, "mtcars.csv")
 fs_upload(id, "mtcars.csv")
 fs_add_tags(id, "demo")
 fs_category_list()
-fs_make_private(id)
+# finally we make the data public
+fs_make_public(id)
 ```
 
 ```coffee
@@ -76,13 +77,12 @@ id <- fs_new_article(title="A Test of rfigshare",
 ```
 
 ```coffee
-
 # Details on these files
-fs_details(id, mine=TRUE)
+fs_details(id, mine = TRUE)
 ```
 
 ```coffee
-fs_browse(mine=TRUE)
+fs_browse(mine = TRUE)
 # Browse all your files
 ```
 #Note that we can easily grab the ids with the wrapper function fs_ids:

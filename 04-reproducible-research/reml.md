@@ -52,6 +52,13 @@ ggplot(dat, aes(year, catch)) + geom_line() + facet_wrap(~a3_code, scales = "fre
 
 ```r
 library(data.table)
+```
+
+```
+## data.table 1.8.8 For help type: help("data.table")
+```
+
+```r
 species <- data.table(species)
 setkey(species, "a3_code")
 code_names <- species[who, scientific_name]
@@ -92,8 +99,18 @@ Perhaps we want date formats
 
 
 ```r
-col_meta <- c(catch = "Global Landings of fish", year = "year", a3_code = "3 digit country code")
-unit_meta <- list(catch = "tonnes", year = "YYYY", a3_code = codes)
+meta <- list(catch = list("catch", "Global Landings of fish", "tonnes"), year = list("year", 
+    "the year for which data was reported", "YYYY"), a3_code = list("a3_code", 
+    "3 digit country code", codes))
+```
+
+
+We must make sure that column classes are correct.  
+
+
+```r
+# dat$year = as.Date(as.character(dat$year), format='%Y')
+dat$a3_code <- as.factor(dat$a3_code)
 ```
 
 
@@ -107,22 +124,21 @@ require(reml)
 ```
 
 ```r
-eml$set(contact_givenName = "Carl", contact_surName = "Boettiger", contact_email = "cboettig@ropensci.org")
+description <- "Landings data for several species by year, from the OpenFisheries database"
+eml_write(dat = dat, meta, title = "Landings Data", description = description, 
+    creator = "Karthik Ram <karthik@ropensci.org>", file = "landings.xml")
 ```
 
 ```
-## Error: object 'eml' not found
-```
-
-```r
-file_description <- "Landings data for several species by year, from the OpenFisheries database"
-eml_write(dat = dat, col_meta, unit_meta, .title = "Landings Data", file = "landings.xml", 
-    file_description = file_description)
+## Loading required package: uuid
 ```
 
 ```
-## Error: unused arguments (.title = "Landings Data", file_description =
-## file_description)
+## Warning: there is no package called 'uuid'
+```
+
+```
+## [1] "landings.xml"
 ```
 
 
@@ -131,17 +147,27 @@ eml_write(dat = dat, col_meta, unit_meta, .title = "Landings Data", file = "land
 
 
 ```r
-eml_publish("landings.xml", description = file_description, categories = "Ecology", 
-    tags = "fisheries", destination = "figshare")
+eml_publish("landings.xml", description = description, categories = "Ecology", 
+    tags = "fisheries", destination = "figshare", visibility = "public")
 ```
 
 ```
-## Loading required package: rfigshare
+## Loading required package: rfigshare text_content() deprecated. Use
+## parsed_content(x, as = 'parsed') Loading required package: rjson
+## 
+## Attaching package: 'rjson'
+## 
+## The following object is masked from 'package:RJSONIO':
+## 
+## fromJSON, toJSON
+## 
+## Your article has been created! Your id number is 788983 text_content()
+## deprecated. Use parsed_content(x, as = 'parsed') text_content()
+## deprecated. Use parsed_content(x, as = 'parsed')
 ```
 
 ```
-## Error: XML content does not seem to be XML, nor to identify a file name
-## 'landings.xml'
+## [1] 788983
 ```
 
 

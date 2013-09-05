@@ -19,3 +19,7 @@ df <- read.csv(file = "/Users/Karthik/Documents/sannic-project/files/dataset-201
 
 4. Where possible attach `sessionInfo()` somewhere in your project folder. Session information is invaluable since it captures all of the packages used in the current project. If a newer version of a project changes the way a function behaves, you can always go back and reinstall the version that worked (Note: At least on CRAN all older versions of packages are permanently archived).
 
+When you use the `stitch()` function in the `knitr` package, it automatically includes this information.
+
+
+

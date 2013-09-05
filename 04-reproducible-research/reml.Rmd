@@ -23,7 +23,6 @@ names(dat) = c("catch", "year", "a3_code")
 Tidy data is easy to plot:
 
 ```{r}
-
 ggplot(dat, aes(year, catch)) + geom_line() + facet_wrap(~a3_code, scales="free_y")
 ```
 
