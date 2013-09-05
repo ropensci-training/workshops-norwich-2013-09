@@ -4,6 +4,9 @@
 
 ## Brief history of reproducible documents
 
+The problem:
+
+> Results from scientific research have to be reproducible to be trustwor- thy. We do not want a finding to be merely due to an isolated occur- rence, e.g. only one specific laboratorian can produce the results on one specific day, and nobody else can produce the same results under the same conditions.
 
 
 ## Advantages of using a reproducible workflow.
@@ -79,7 +82,7 @@ The mean sepal length across all species of irises is <pre><code>`r mean(iris$Se
 
 **And even equations**
 <pre><code>
-$E = mc^2$
+$Y = \beta_0 + \beta_1 x + \epsilon$
 </pre></code>
 
 
