@@ -10,7 +10,7 @@ If you have to repeat the same few lines of code more than once, then you really
 ## Basic components of a function
 
 * The `body()`, the code inside the function.
-* The formals(), the "formal" argument list, which controls how you * can call the function.
+* The `formals()`, the "formal" argument list, which controls how you can call the function.
 * The `environment()`` which determines how variables referred to inside the function are found.
 
 ```
@@ -22,7 +22,7 @@ formals(f)
 environment(f)
 ```
 
-Question: How do we delete this function from our environment?
+**Question: How do we delete this function from our environment?**
 
 ## More on environments
 Variables defined inside functions exist in a different environment than the global environment. However, if a function is not defined inside one, it will look one level above.
@@ -34,7 +34,7 @@ x <- 2
 g <- function() { 
   y <- 1
   c(x, y)
-}
+}  
 g()
 rm(x, g)
 ```
@@ -80,7 +80,8 @@ g <- function() {
   x <- 20
   y <- 10
   c(x = x, y = y)
-} g()
+} 
+g()
 ```
 
 ## What does this function return??
@@ -93,7 +94,8 @@ h <- function() {
 z <- 20
     c(x = x, y = y, z = z)
   }
-i() }
+i() 
+}
 h()
 ```
 
