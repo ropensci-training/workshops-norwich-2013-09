@@ -65,6 +65,14 @@ arrange(sdf, color)
 # 5  blue     4
 ```
 
+You can also run transformation on the data quite efficiently using mutate
+
+```
+mutate(df, double = 2 * value)
+```
+
+---
+
 ## More on groupwise transformations
 
 Let's read a large dataset of baby names from the social security administration.
@@ -73,8 +81,23 @@ Let's read a large dataset of baby names from the social security administration
 library(plyr)
 library(ggplot2)
 options(stringsAsFactors = FALSE)
+
+# Summarizing the iris dataset
+
+```coffee
+ddply(iris, .(Species), summarise, mean_sepal = mean(Sepal.Length))
+#     Species mean_sepal
+# 1     setosa      5.006
+# 2 versicolor      5.936
+# 3  virginica      6.588
+```
+
+![](sac_full.png)
+
+
+```coffee
 # Can read compressed files directly
-bnames <- read.csv("data/baby-names2.csv.bz2")
+bnames <- read.csv("data/bnames2.csv.csv.bz2")
 ```
 
 Extract your name from this dataset (if it's there)
@@ -84,24 +107,23 @@ karthik <- subset(bnames, name == "karthik")
 # my name is a little too uncommon in this dataset
 ```
 
-### How do we compute the number of people with each name over all years? It’s pretty easy if you have a single name:
-
-```coffee
-hadley <- subset(bnames, name == "Jason")
-sum(Jason$n)
-# Or
-summarise(Jason, n = sum(n))
-```
-
-### But how could we do this for every name?
-
-This is where the split-apply functionality of plyr comes in handy.
+ **What if we want to compute the rank of a name
+  within a sex and year? 
+  This task is easy if we have a single year & sex:**
 
 ```
-counts <- ddply(bnames, "name", summarise,
-  n = sum(n))
+one <- subset(bnames, sex == "boy" & year == 2008)
+one <- mutate(one,
+  rank = rank(desc(prop), ties.method = "min"))
+head(one)
 ```
 
+# What if we want to transform for every sex and year?
+
+```
+bnames <- ddply(bnames, c("sex", "year"), mutate,
+  rank = rank(desc(prop), ties.method = "min"))
+``
 
 ![](full_apply_suite.png)
 
