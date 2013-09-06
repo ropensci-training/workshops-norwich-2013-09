@@ -33,7 +33,7 @@ mod <- lm(mpg ~ wt, data = mtcars)
 ```
 
 extract the residual degrees of freedom. 
-```
+
 
 ----
 
