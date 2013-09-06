@@ -1,4 +1,32 @@
 
+# Diagnostic functions in R
+
+Super helpful functions
+* `str()` - Compactly display the internal structure of an R object. Perhaps the most uesful diagnostic function in R.
+* `class()` *Retrieves the internal class of an object*
+* `mode()` *Get or set the type or storage mode of an object.*
+* `length()` *Retrieve or set the dimension of an object.*  
+* `dim()` *Retrieve or set the dimension of an object.*
+* `R -- vanilla` - *Allows you to start a clean session of R. A great way to test whether your code is reproducible.*
+* `sessionInfo()` *Print version information about R and attached or loaded packages.*  
+* `options()` *Allow the user to set and examine a variety of global options which affect the way in which R computes and displays its results.*
+
+`str()` is your best friend
+
+`str` is short for structure. You can use it on any object. Try the following:
+
+```coffee 
+x <- 1:10
+class(x)
+mode(x)
+str(x)
+
+
+
+
+
+---
+
 # Seeking help
 
 There are various ways to seek help on R.

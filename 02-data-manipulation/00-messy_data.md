@@ -47,7 +47,7 @@ Get values out of columns, variables as columns:
 
 
 ```coffee
-dat <- melt(dat, "status")
+dat <- melt(dat, id.vars = "status")
 ```
 
 

@@ -37,6 +37,8 @@ shortcut:
 * In windows and linux, press alt and the minus sign: alt + -
 * On Mac OS, press option and the minus sign: alt + -
 
+*Note: This won't work on the web hosted version of RStudio since these shortcuts are used for other purposes*
+
 Notice that RStudio automagically surrounds `<-` with spaces, which
 demonstrates a useful code formatting practice. Code is miserable to
 read on a good day. Give your eyes a break and use spaces (Note: There is a package called `formatR` that can also help you format code nicely.)

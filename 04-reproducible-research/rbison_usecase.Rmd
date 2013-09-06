@@ -31,7 +31,7 @@ getdata <- function(x, count=2){
   bison_data(out, "data_df")
 }
 
-registerDoMC(cores=4)
+registerDoMC(cores = 4)
 out <- ldply(mynames, getdata, count=500, .parallel=TRUE)
 df <- ddply(out, .(name), summarise, abd = length(name))
 ```

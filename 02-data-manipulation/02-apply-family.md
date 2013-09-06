@@ -73,7 +73,19 @@ An extremely useful function to generate datasets for simulation purposes.
 ```coffee
 replicate(10, rnorm(10))
 replicate(10, rnorm(10), simplify = TRUE)
+# The final arguments turns the result into a vector or matrix if possible.
 ```
 
 ## mapply
+Its more or less a multivariate version of `sapply`. It applies a function to all corresponding elements of each argument. 
+
+example:
+
+```coffee
+list_1 <- list(a = c(1:10), b = c(11:20))
+list_2 <- list(c = c(21:30), d = c(31:40))
+mapply(sum, list_1$a, list_1$b, list_2$a, list_2$b)
+```
+
+
 

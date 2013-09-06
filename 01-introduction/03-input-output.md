@@ -6,7 +6,10 @@
 ```coffee
 x <- scan("data_file.txt")
 # add a separator
-x <- scan("data_file.txt", what=" ", sep = "\n")
+x <- scan("data/messy_data.txt", what=" ", sep = "\n")
+# or read data from the console
+x <- scan()
+# keep entering values and hit an empty return key to end
 ```
 Reading single lines (e.g. user input)
 
