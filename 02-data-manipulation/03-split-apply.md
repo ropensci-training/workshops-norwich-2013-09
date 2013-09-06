@@ -81,6 +81,7 @@ Let's read a large dataset of baby names from the social security administration
 library(plyr)
 library(ggplot2)
 options(stringsAsFactors = FALSE)
+```
 
 # Summarizing the iris dataset
 
