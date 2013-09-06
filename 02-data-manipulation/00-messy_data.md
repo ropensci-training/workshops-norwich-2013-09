@@ -3,7 +3,7 @@
 
 Raw data from various ecological studies can be poorly formatted and/or may lack appropriate details of the study. Correcting data in place can be a dangerous exercise since the original raw data would get overwritten and there would be no way to audit this process or recover from mistakes made during this time. A good data practice would be to maintain the original data, but use a programmatic script to clean it, fix mistakes and save that cleaned dataset for further analysis. 
 
-![A sample workflow](assets/sample_workflow.png)
+![A sample workflow](sample_workflow.png)
 
 
 ## Tidy data
