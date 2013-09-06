@@ -15,12 +15,14 @@ sapply
 
 ## apply
 
+```
 m <- matrix(c(1:10, 11:20), nrow = 10, ncol = 2)
 
 apply(m, 1, sum)
 apply(m, 2, sum)
 apply(m, 1, mean)
 apply(m, 2, mean)
+```
 
 ## by
 
