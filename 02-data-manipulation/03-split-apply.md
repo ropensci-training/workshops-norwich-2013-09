@@ -102,7 +102,7 @@ counts <- ddply(bnames, "name", summarise,
 ```
 
 
-![](fully_apply_suite.png)
+![](full_apply_suite.png)
 
 
 
