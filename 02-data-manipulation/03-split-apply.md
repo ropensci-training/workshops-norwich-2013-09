@@ -86,11 +86,12 @@ karthik <- subset(bnames, name == "karthik")
 
 ### How do we compute the number of people with each name over all years? It’s pretty easy if you have a single name:
 
-
+```coffee
 hadley <- subset(bnames, name == "Jason")
 sum(Jason$n)
 # Or
 summarise(Jason, n = sum(n))
+```
 
 ### But how could we do this for every name?
 
