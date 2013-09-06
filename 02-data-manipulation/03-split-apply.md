@@ -124,7 +124,7 @@ head(one)
 ```
 bnames <- ddply(bnames, c("sex", "year"), mutate,
   rank = rank(desc(prop), ties.method = "min"))
-``
+```
 
 ![](full_apply_suite.png)
 
