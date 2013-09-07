@@ -28,7 +28,8 @@ Welcome to the GitHub repository for the rOpenSci workshop on data science using
 
 ### [http://rstudio.ropensci.org](http://rstudio.ropensci.org)
 
-and use the credentials provided to you.
+and use the credentials provided to you.  
+*Note: Server is not always on. But if you have an Amazon account you can spin up an instance of our machine image at any time. email us if you're interested.*
 
 ---
 
