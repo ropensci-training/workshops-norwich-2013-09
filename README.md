@@ -40,4 +40,5 @@ If you know how to use GitHub, then simply clone this repository. Otherwise clic
 
 
 ## License  
-<a rel="license" href="http://creativecommons.org/licenses/by/2.0/">Creative Commons Attribution 2.0 Generic License</a>.
+<a rel="license" href="http://creativecommons.org/licenses/by/2.0/">Creative Commons Attribution 2.0 Generic License</a>. Many thanks to [Hadley Wickham](http://had.co.nz/) for example datasets for plyr.
+
